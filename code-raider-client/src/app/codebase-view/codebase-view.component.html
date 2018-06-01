@@ -1,0 +1,33 @@
+<div class="container" appPageContent>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" [src]="codeBase.imageUrl" *ngIf="codeBase.imageUrl">
+      </div>
+    </div>
+    <div class="col-md-8">
+      <form>
+        <div class="form-group">
+          <h2>{{codeBase.title}}</h2>
+        </div>
+        <div class="form-group">
+          <span class="badge badge-info" *ngFor="let tag of codeBase.tags">{{tag}}</span>
+        </div>
+        <div class="form-group">
+          <p>{{codeBase.description}}</p>
+        </div>
+        <div class="form-group">
+          <b>{{ codeBase.price | currency:'USD':'symbol' }}</b>
+        </div>
+        <button 
+        class="btn btn-primary"
+        (click)="order()">Add to Cart</button>
+        <button
+        *ngIf="auth.admin" 
+        [routerLink]="['/codebases/edit', codeBase._id ]"
+        type="button"
+        class="btn btn-link">Edit</button>
+      </form>
+    </div>
+  </div>
+</div>

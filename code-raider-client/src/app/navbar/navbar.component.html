@@ -1,0 +1,96 @@
+<header 
+class="site-header">
+  <nav 
+  class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div 
+    class="container">
+      <a 
+      class="navbar-brand" 
+      routerLink=''>
+      <img src="../../assets/code-raider-logo.png" id="code-raider-logo">
+      </a>
+      <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-toggle="collapse" 
+      data-target="#navbarCollapse" 
+      aria-controls="navbarCollapse"
+      aria-expanded="false" 
+      aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div 
+      class="collapse navbar-collapse" 
+      id="navbarCollapse">
+        <div 
+        class="d-flex flex-column flex-md-row justify-content-between">
+          <ul 
+          class="navbar-nav mr-auto">
+            <li>
+              <input id="site-search" type="text" class="form-control" placeholder="Search Code Raider">
+            </li>
+            <li 
+            class="nav-item py-2 d-md-inline-block">
+              <a 
+              class="nav-link" 
+              routerLink='codebases' 
+              routerLinkActive="active" 
+              [routerLinkActiveOptions]="{ exact: true }">Discover</a>
+            </li>
+            <li 
+            class="nav-item py-2 d-md-inline-block">
+              <a 
+              class="nav-link"
+              routerLink='codebases/new' 
+              routerLinkActive="active" 
+              [routerLinkActiveOptions]="{ exact: true }">Sell</a>
+            </li>
+            <li 
+            *ngIf="auth.SignedIn"
+            class="nav-item py-2 d-md-inline-block">
+              <a 
+              class="nav-link"
+              routerLink='orders' 
+              routerLinkActive="active" 
+              [routerLinkActiveOptions]="{ exact: true }">My orders</a>
+            </li>
+            <li 
+            *ngIf="auth.admin"
+            class="nav-item py-2 d-md-inline-block">
+                <a 
+                class="nav-link" 
+                routerLink="admin/dashboard"
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{ exact: true }">Admin's dashboard</a>
+            </li>
+            <li
+            *ngIf="auth.SignedIn; else anonymousUser;" 
+            class="nav-item py-2 d-md-inline-block">
+              <a 
+              class="nav-link"
+              routerLink="/"
+              (click)="signout()">Sign out</a>
+            </li>
+            <ng-template #anonymousUser>
+            <li 
+            class="nav-item py-2 d-md-inline-block">
+                <a 
+                class="nav-link" 
+                routerLink="login"
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{ exact: true }">Log in</a>
+            </li>
+            <li class="nav-item py-2 d-md-inline-block">
+              <a 
+              class="nav-link" 
+              routerLink="signup"
+              routerLinkActive="active" 
+              [routerLinkActiveOptions]="{ exact: true }">Sign up</a>
+            </li>
+            </ng-template>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

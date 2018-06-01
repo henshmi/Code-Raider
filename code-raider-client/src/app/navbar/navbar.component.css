@@ -1,0 +1,21 @@
+
+#code-raider-logo{
+    height: 50px;
+}
+#site-search{
+    background-color: #25292E;
+    width: 400px;
+    margin:7px;
+    border-color:black;
+    color: whitesmoke;
+}
+.site-header{
+    background-color: #25292E;
+}
+
+.app-nav-item{
+    color: white;
+}
+.nav-link{
+    cursor: pointer;
+}

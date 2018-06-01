@@ -1,0 +1,10 @@
+.container{
+    margin-top:100px;
+}
+
+.search-container{
+    background-color:white;
+    padding:15px;
+    border-radius:10px;
+    border: 1px solid #cccc;
+}

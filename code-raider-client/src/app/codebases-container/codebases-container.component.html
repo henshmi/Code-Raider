@@ -1,0 +1,8 @@
+<div
+*ngFor="let c of codebases;">
+  <codebase-card 
+  [code-base-model]="c" 
+  (deleted)="codebaseDeleted($event)"
+  (ordered)="codebaseOrdered($event)"></codebase-card>
+  <hr>
+</div>

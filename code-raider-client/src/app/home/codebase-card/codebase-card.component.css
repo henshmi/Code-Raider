@@ -1,0 +1,18 @@
+.btn{
+    margin:5px;
+    width:120px;
+}
+
+.card-title{
+    text-shadow: 1px 1px #cccc;
+}
+
+.card-title:hover{
+    color: rgb(0, 89, 131);
+    text-decoration: none;
+}
+
+.tags-container{
+    display:block;
+    height: 30px;
+}

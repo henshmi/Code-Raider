@@ -1,0 +1,11 @@
+<div class="row">
+  <span class="col-md-12" *ngFor="let order of orders">
+    <span *ngIf="order.confirmed === confirmed">
+        <order-card 
+        [order]="order"
+        (confirm)="confirmOrder($event)"
+        (cancel)="cancelOrder($event)"></order-card>
+        <hr>
+    </span>
+  </span>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="d-flex flex-justify-start">
+      <div>
+        <img class="img img-thumbnail" width="100px" [src]="codeBaseModel.imageUrl">
+      </div>
+      <div class="col-md-6 pr-3">
+        <h4>
+          <a [routerLink]="['/codebases/view', codeBaseModel._id ]" class="link card-title">{{codeBaseModel.title}}</a>
+        </h4>
+        <div class="container">
+          <span class="badge badge-info" *ngFor="let tag of codeBaseModel.tags">{{tag}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-3 d-inline-block">
+        {{codeBaseModel.price | currency:'USD':'symbol':'0.0'}}
+      </div>
+
+      <div 
+      class="col-md-2 text-right"
+      *ngIf="auth.signedIn">
+        <button 
+        class="btn btn-primary float-left" 
+        (click)="order()">
+          Add to Cart
+        </button>
+        <button (click)="delete()" *ngIf="auth.admin" class="btn btn-danger float-left">Delete</button>
+      </div>
+  </div>
+</div>

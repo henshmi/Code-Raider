@@ -1,0 +1,108 @@
+<div class="page-content container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="f.valid && submit()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input 
+          #title="ngModel" 
+          [(ngModel)]="codeBase.title" 
+          name="title" 
+          id="title" 
+          type="text"
+          placeholder="Enter a title.." 
+          class="form-control" 
+          required>
+          <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+            Title is required.
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="title">Description</label>
+            <textarea 
+            rows="3"
+            placeholder="Describe your codebase.."  
+            #description="ngModel" 
+            [(ngModel)]="codeBase.description" 
+            name="description" id="description" 
+            type="text" 
+            class="form-control" 
+            required></textarea>
+            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+              Description is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="tags">Tags</label>
+            <tag-input 
+            [(ngModel)]="codeBase.tags"
+            [modelAsStrings]="true"
+            theme='dark'
+            placeholder=''
+            id="tags"
+            name="tags" 
+            class="form-control"
+            [maxItems]="12">
+              <tag-input-dropdown
+                [autocompleteItems]="codeBase.tags"
+                [showDropdownIfEmpty]="true"
+                [dynamicUpdate]="false"
+              >
+              </tag-input-dropdown>
+            </tag-input>
+          </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <div class="input-group-btn">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+              <input #price="ngModel" 
+              [(ngModel)]="codeBase.price" 
+              name="price" 
+              id="price" 
+              type="number" 
+              class="form-control" 
+              required 
+              [min]="0"
+              [max]="1000000"
+              />
+            </div>
+          </div>
+          <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+            <div *ngIf="price.errors.required">Price is required.</div>
+            <div *ngIf="price.errors.min">Price should be 0 or higher.</div>
+            <div *ngIf="price.errors.max">You're asking for too much..</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Image Url</label>
+          <input 
+          #imageUrl="ngModel" 
+          [(ngModel)]="codeBase.imageUrl" 
+          name="imageUrl" 
+          id="imageUrl" 
+          type="text"
+          placeholder="Paste a link to a relevant image.."  
+          class="form-control"
+            required url>
+          <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+            <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
+            <div *ngIf="imageUrl.errors.url">Please enter a valid URL</div>
+          </div>
+        </div>
+        <button class="btn btn-primary">Save</button>
+        <button (click)="log()" type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" [src]="codeBase.imageUrl" *ngIf="codeBase.imageUrl">
+        <div class="card-body">
+          <h5 class="card-title">{{ codeBase.title }}</h5>
+          <p class="card-text">{{ codeBase.price | currency:'USD':'symbol' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ngx-toastr/toastr.css";
+ 
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Nunito:300');
+
+.btn{
+    margin:5px;
+    background-color:white;
+    border-color:grey;
+    color: black;
+}
+
+.link{
+    color: black;
+}
+
+body{
+    background-color: whitesmoke;
+    font-family: 'Nunito', sans-serif;
+}
+
+.badge{
+    margin-right: 5px;
+}

@@ -1,0 +1,20 @@
+<div 
+class="container" 
+appPageContent>
+<h4><i class="fas fa-shopping-cart"></i> Your cart</h4>
+  <hr>
+  <orders-container
+  [orders]="myOrders"
+  [confirmed] = false>
+  </orders-container>
+</div>
+<div 
+class="container" 
+appPageContent>
+  <h4>Previous orders</h4>
+  <hr>
+  <orders-container
+  [orders]="myOrders"
+  [confirmed] = true>
+  </orders-container>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="d-flex flex-justify-start">
+        <div>
+          <img class="img img-thumbnail" width="100px" [src]="order.codebase.imageUrl">
+        </div>
+        <div class="col-md-6 pr-3">
+          <h4>
+            <a [routerLink]="['/codebases/view', order.codebase._id ]" class="link card-title">{{order.codebase.title}}</a>
+          </h4>
+          <div class="container">
+            <span class="badge badge-info" *ngFor="let tag of order.codebase.tags">{{tag}}</span>
+          </div>
+        </div>
+  
+        <div class="col-md-3 d-inline-block">
+          {{order.codebase.price | currency:'USD':'symbol':'0.0'}}
+        </div>
+  
+        <div 
+        class="col-md-2 text-right"
+        *ngIf="!order.confirmed">
+          <button 
+          class="btn btn-success float-left" 
+          (click)="confirmOrder()">
+              Confirm
+          </button>
+          <button 
+          class="btn btn-danger float-left" 
+          (click)="cancelOrder()">
+              Cancel
+          </button>
+        </div>
+    </div>
+  </div>
