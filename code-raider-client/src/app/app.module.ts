@@ -9,6 +9,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import {DataTableModule} from 'angular-6-datatable';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -37,6 +38,9 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderCardComponent } from './order-card/order-card.component';
 import { OrdersContainerComponent } from './orders-container/orders-container.component';
 import { TagsService } from './services/tags.service';
+import { AdminAnalyticsComponent } from './admin/admin-analytics/admin-analytics.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 const appRoutes: Routes = [
   {
@@ -57,7 +61,12 @@ const appRoutes: Routes = [
   {
     path: 'admin/dashboard',
     component: AdminDashboardComponent,
-    canActivate: [AuthGuard, AdminAuthGuard]
+    canActivate: [AuthGuard, AdminAuthGuard],
+    children: [
+      {path: '', component: AdminAnalyticsComponent},
+      {path: 'users', component: AdminUsersComponent},
+      {path: 'orders', component: AdminOrdersComponent},
+    ]
   },
   {
     path: 'orders', component: MyOrdersComponent,
@@ -89,7 +98,10 @@ const appRoutes: Routes = [
     CodebasesContainerComponent,
     MyOrdersComponent,
     OrderCardComponent,
-    OrdersContainerComponent
+    OrdersContainerComponent,
+    AdminAnalyticsComponent,
+    AdminUsersComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -101,6 +113,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     TagInputModule,
+    DataTableModule,
     RouterModule.forRoot(
       appRoutes
     )

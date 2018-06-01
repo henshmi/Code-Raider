@@ -60,8 +60,7 @@ class="site-header">
                 <a 
                 class="nav-link" 
                 routerLink="admin/dashboard"
-                routerLinkActive="active" 
-                [routerLinkActiveOptions]="{ exact: true }">Admin's dashboard</a>
+                routerLinkActive="active">Admin's dashboard</a>
             </li>
             <li
             *ngIf="auth.SignedIn; else anonymousUser;" 

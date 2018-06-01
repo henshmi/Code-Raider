@@ -3,15 +3,29 @@ const get_ip = require('ipware')().get_ip;
 
 module.exports = {
 
-	getOrders: async(req, res, next) => {
+	getAllOrders: async(req, res, next) => {
+
+		Order.getAllOrders(function(err, orders){
+			if(err){
+				res.status(404).send('Not Found');
+				console.log(err);
+			}
+			else{
+				res.status(200).json(orders);
+			}
+		});
+	},
+
+	getMyOrders: async(req, res, next) => {
 		var user = req.user;
 
-		Order.getOrders(user._id, function(err, orders){
+		Order.getMyOrders(user._id, function(err, orders){
 			if(err){
 				res.status(404).send('Not Found');
 			}
-
-			res.status(200).json(orders);
+			else{
+				res.status(200).json(orders);
+			}
 		});
 	},
 

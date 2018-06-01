@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-const { URL } = require('url');
 
 var codebaseSchema = mongoose.Schema({
 	user_email:{

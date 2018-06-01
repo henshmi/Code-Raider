@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
-const { URL } = require('url');
 var Schema = mongoose.Schema;
+
 var ObjectId = mongoose.Types.ObjectId;
 
 var orderSchema = Schema({
 	user:{
 		type: Schema.Types.ObjectId, 
-		ref: 'User' 
+		ref: 'user' 
 	},
   	codebase: { 
   		type: Schema.Types.ObjectId, 
@@ -25,7 +25,14 @@ var orderSchema = Schema({
 
 var Order = module.exports = mongoose.model('Order', orderSchema);
 
-module.exports.getOrders = function(user_id, callback){
+module.exports.getAllOrders = function(callback){
+    Order.find({})
+    .populate('codebase')
+    .populate('user')
+    .exec(callback);
+}
+
+module.exports.getMyOrders = function(user_id, callback){
     Order.find({user: user_id })
     .populate('codebase')
     .exec(callback);

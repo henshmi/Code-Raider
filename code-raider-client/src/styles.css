@@ -25,3 +25,7 @@ body{
 .badge{
     margin-right: 5px;
 }
+
+.page-item.active .page-link {
+    background-color:#25A2B7;
+}

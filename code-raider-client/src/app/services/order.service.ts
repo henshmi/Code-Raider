@@ -20,6 +20,11 @@ export class OrderService extends DataService {
     super(http, 'http://localhost:8080/api/orders');
   }
 
+  getMyOrders() {
+    return this.getAll('/myorders')
+    .catch(this.handleError);
+  }
+
   addOrder(order: OrderModel) {
     return this.post(order, '/new')
     .catch(this.handleError);

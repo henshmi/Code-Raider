@@ -7,22 +7,37 @@
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column">
               <li class="nav-item">
-                <a class="nav-link active whh" href="#">Analytics <span class="sr-only">(current)</span></a>
+                <a 
+                class="nav-link" 
+                routerLink="./"
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{ exact: true }">
+                    Analytics 
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Users</a>
+                <a class="nav-link" 
+                routerLink="./users"
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{ exact: true }">
+                    Users
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Orders</a>
+                <a 
+                class="nav-link" 
+                routerLink="./orders"
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{ exact: true }">
+                    Orders
+                </a>
               </li>
             </ul>
           </nav>
-          <div class="col-md-6">
+          <div class="col-md-10">
               <div class="row">
                   <div class="col-md-12">
-                      <trending-tags-chart
-                      [tagsLimit] = "5"
-                      ></trending-tags-chart>
+                      <router-outlet></router-outlet>
                   </div>
               </div>
           </div>

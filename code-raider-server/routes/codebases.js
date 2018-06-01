@@ -4,17 +4,7 @@ const passport = require('passport');
 const passportConf = require('../passport');
 const { validateBody, schemas } = require('../helpers/routeHelpers');
 const CodebaseController = require('../controllers/codebases');
-
-var requiresAdmin = function() {
-  return [
-    function(req, res, next) {
-      if (req.user && req.user.isAdmin === true)
-        next();
-      else
-        res.send(401, 'Unauthorized');
-    }
-  ]
-};
+const adminGuard = require('../helpers/adminGuard');
 
   router.route('')
   .get(CodebaseController.getCodebases);
@@ -29,18 +19,9 @@ var requiresAdmin = function() {
   .get(passport.authenticate('jwt',{session: false}), CodebaseController.getCodebase);
   
   router.route('/:_id')
-  .post(passport.authenticate('jwt',{session: false}),requiresAdmin(), CodebaseController.postCodebase);
+  .post(passport.authenticate('jwt',{session: false}),adminGuard.requiresAdmin(), CodebaseController.postCodebase);
 
   router.route('/:_id')
-  .delete(passport.authenticate('jwt',{session: false}),requiresAdmin(), CodebaseController.deleteCodebase);
-
-//   router.route('/sparkComment')
-//   .post(validateBody(schemas.sparkSchema),passport.authenticate('jwt',{session: false}), CommentsController.sparkComment);
-
-//   router.route('/sparkComment')
-//   .delete( validateBody(schemas.sparkSchema),passport.authenticate('jwt',{session: false}), CommentsController.unsparkComment);
-
-  // router.route('/secret')
-  // .get(passport.authenticate('jwt',{session: false}), CodebaseController.secret);
+  .delete(passport.authenticate('jwt',{session: false}),adminGuard.requiresAdmin(), CodebaseController.deleteCodebase);
 
 module.exports = router;
