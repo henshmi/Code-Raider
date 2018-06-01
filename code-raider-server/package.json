@@ -1,0 +1,28 @@
+{
+  "name": "commentonserverapp",
+  "version": "1.0.0",
+  "description": "Server application for CommentOn platform.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "*",
+    "cors": "^2.8.4",
+    "express": "*",
+    "express-promise-router": "^2.0.0",
+    "ipware": "*",
+    "joi": "^13.0.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "*",
+    "nodemon": "^1.17.5",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1",
+    "passport-local": "^1.0.0",
+    "sha1": "^1.1.1",
+    "url": "^0.11.0"
+  },
+  "author": "Chen Shmilovich",
+  "license": "ISC"
+}
