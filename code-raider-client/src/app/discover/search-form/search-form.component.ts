@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'search-form',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
+  @Output('search') search = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  submit(filter) {
+    filter.tag = filter.tag ? encodeURIComponent(filter.tag) : '';
+    filter.minprice = filter.minprice ? filter.minprice : '';
+    filter.maxprice = filter.maxprice ? filter.maxprice : '';
+
+    this.search.emit(filter);
   }
 
 }

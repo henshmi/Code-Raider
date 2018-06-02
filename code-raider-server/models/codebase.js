@@ -42,16 +42,34 @@ module.exports.getCodebase = function(id,callback){
 	Codebase.find(query, callback);
 }
 
-module.exports.getCodebases = function(limit,callback){
+module.exports.getCodebases = function(query,callback){
+	let tag = query.tag;
+	const minprice = query.minprice;
+	const maxprice = query.maxprice;
 
-	var numOfCodebases;
-	Codebase.count({}, function(err, count){
-    	numOfCodebases = count;
-    	if(limit>numOfCodebases){
-    		limit = numOfCodebases;
-    	}
-    	Codebase.find({},callback).skip(numOfCodebases - limit);
-	});
+	let dbQueries = [];
+
+	if(minprice){
+		dbQueries.push({ "price": { $gte: minprice } });
+	}
+
+	if(maxprice){
+		dbQueries.push({ "price": { $lte: maxprice } });
+	}
+	if(tag){
+		tag = decodeURIComponent(tag);
+		tag = tag.replace('+', "\\+");
+		const pattern = new RegExp('.*'+tag+'.*', "i");
+		dbQueries.push({ "tags": { $in: [pattern] }});
+	}
+
+	if(dbQueries.length === 0){
+		dbQueries = [{}];
+	}
+
+    Codebase.find({})
+    .and(dbQueries)
+    .exec(callback);
 }
 
 module.exports.addCodebase = function(user_email, codebase,callback){

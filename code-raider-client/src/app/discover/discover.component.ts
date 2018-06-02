@@ -39,4 +39,11 @@ export class DiscoverComponent implements OnInit {
     });
   }
 
+  filter(params) {
+    this.codebaseService.getAll('', params)
+    .subscribe(codebases => {
+      this.codebases = codebases;
+    });
+  }
+
 }

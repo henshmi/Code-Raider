@@ -19,8 +19,10 @@ export class DataService {
     return this.http.get(this.url + '/' + id);
   }
 
-  getAll(route = '') {
-    return this.http.get(this.url + route);
+  getAll(route = '', params = {}) {
+    return this.http.get(this.url + route, {
+      params: params
+    });
   }
 
   post(params, route = '') {

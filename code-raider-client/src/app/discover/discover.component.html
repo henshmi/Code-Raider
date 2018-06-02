@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-      <search-form class="col-md-3"></search-form>
+      <search-form 
+      (search)="filter($event)"
+      class="col-md-3"></search-form>
         <codebases-container
         class="col-md-9"
         [codebases]="codebases"

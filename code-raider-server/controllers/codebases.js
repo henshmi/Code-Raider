@@ -10,17 +10,22 @@ module.exports = {
 			if(err){
 				res.status(404).send('Not Found');
 			}
-
-			res.status(200).json(codebase);
+			else{
+				res.status(200).json(codebase);
+			}
 		});
 	},
 	getCodebases: async(req, res, next) => {
-		Codebase.getCodebases(200, function(err, codebases){
+
+		const query = req.query;
+
+		Codebase.getCodebases(query, function(err, codebases){
 			if(err){
 				res.status(404).send('Not Found');
 			}
-
-			res.status(200).json(codebases);
+			else{
+				res.status(200).json(codebases);
+			}
 		});
 	},
 	postCodebase: async(req, res, next) => {
