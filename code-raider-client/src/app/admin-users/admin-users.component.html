@@ -1,3 +1,33 @@
-<p>
-  admin-users works!
-</p>
+<h4>Users</h4>
+<hr>
+<table class="table table-striped" [mfData]="users" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead>
+  <tr>
+      <th style="width: 33%">
+          <mfDefaultSorter by="create_date">Email</mfDefaultSorter>
+      </th>
+      <th style="width: 33%">
+          <mfDefaultSorter by="email">Admin</mfDefaultSorter>
+      </th>
+      <th style="width: 33%">
+        <mfDefaultSorter></mfDefaultSorter>
+      </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of mf.data">
+      <td>{{item.email}}</td>
+      <td>{{item.isAdmin}}</td>      
+      <td><button 
+        class="btn btn-danger"
+        (click)="deleteUser(item._id)">Delete</button></td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+      <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+      </td>
+  </tr>
+  </tfoot>
+</table>

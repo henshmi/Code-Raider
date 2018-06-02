@@ -1,8 +1,4 @@
 <div class="container" appPageContent>
-
-    <h4>Analytics</h4>
-    <hr>
-
     <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column">
@@ -32,6 +28,15 @@
                     Orders
                 </a>
               </li>
+              <li class="nav-item">
+                    <a 
+                    class="nav-link" 
+                    routerLink="./notify"
+                    routerLinkActive="active" 
+                    [routerLinkActiveOptions]="{ exact: true }">
+                        Notify
+                    </a>
+                </li>
             </ul>
           </nav>
           <div class="col-md-10">

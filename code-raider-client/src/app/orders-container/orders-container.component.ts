@@ -41,6 +41,10 @@ export class OrdersContainerComponent implements OnInit {
   }
 
   cancelOrder(id) {
+    if (!confirm('Are you sure you want to cancel this order?')) {
+      return;
+    }
+
     this.orderService.cancelOrder(id)
     .subscribe(response => {
 

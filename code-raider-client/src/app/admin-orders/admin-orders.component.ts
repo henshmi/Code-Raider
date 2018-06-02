@@ -8,7 +8,7 @@ import { OrderService } from '../services/order.service';
 })
 export class AdminOrdersComponent implements OnInit {
 
-  orders;
+  orders: any = [];
 
   constructor(private orderService: OrderService) {
     this.orderService.getAll()
@@ -16,6 +16,29 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  cancelOrder(id) {
+
+    if (!confirm('Are you sure you want to cancel this order?')) {
+      return;
+    }
+
+    this.orderService
+    .cancelOrder(id)
+    .subscribe(response => {
+
+      let index = -1;
+
+      for (let i = 0 ; i < this.orders.length ; i++ ) {
+        if (this.orders[i]._id === id ) {
+          index = i;
+          break;
+        }
+      }
+
+      this.orders.splice(index, 1);
+    });
   }
 
 }

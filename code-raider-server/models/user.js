@@ -42,6 +42,19 @@ userSchema.methods.isValidPassword = async function(newPassword){
 		throw new Error(error);
 	}
 }
+
 const User = mongoose.model('user', userSchema);
+
+
+User.getUsers = function(callback){
+    User.find({}, callback);
+}
+
+User.removeUser = function(id,callback){
+
+	var query = {_id: id};
+
+	User.deleteOne(query, callback);
+}
 
 module.exports = User;

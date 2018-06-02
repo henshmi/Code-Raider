@@ -36,5 +36,30 @@ module.exports = {
 	signIn: async(req, res, next) => {
 		const token = signToken(req.user);
 		res.status(200).json({ 'token': token, 'isAdmin': req.user.isAdmin })
+	},
+
+	getUsers: async(req, res, next) => {
+		User.getUsers(function(err, users){
+			if(err){
+				res.status(404).send('Not Found');
+			}
+			else{
+				res.status(200).json(users);
+			}
+		});
+	},
+
+	deleteUser: async(req, res, next) => {
+
+		var user_id = req.params.user_id;
+
+		User.removeUser(user_id, function(err, user){
+			if(err){
+				res.status(500).send('Server Error');
+			}
+			else{
+				res.status(200).json(user);
+			}
+		});
 	}
 }

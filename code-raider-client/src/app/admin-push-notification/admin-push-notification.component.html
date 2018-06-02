@@ -1,0 +1,15 @@
+<h4>Notify</h4>
+<hr>
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="submit(notification.value)">
+    <textarea
+    #notification
+    placeholder="Write message to all users.." 
+    name="notification" 
+    class="form-control"
+    rows="5"></textarea>
+    <br>
+    <button class="btn btn-primary">Submit</button>
+  </form>
+</div>
+

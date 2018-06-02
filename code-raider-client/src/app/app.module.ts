@@ -41,6 +41,8 @@ import { TagsService } from './services/tags.service';
 import { AdminAnalyticsComponent } from './admin/admin-analytics/admin-analytics.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { UserService } from './services/user.service';
+import { AdminPushNotificationComponent } from './admin-push-notification/admin-push-notification.component';
 
 const appRoutes: Routes = [
   {
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
       {path: '', component: AdminAnalyticsComponent},
       {path: 'users', component: AdminUsersComponent},
       {path: 'orders', component: AdminOrdersComponent},
+      {path: 'notify', component: AdminPushNotificationComponent}
     ]
   },
   {
@@ -101,7 +104,8 @@ const appRoutes: Routes = [
     OrdersContainerComponent,
     AdminAnalyticsComponent,
     AdminUsersComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    AdminPushNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -130,6 +134,7 @@ const appRoutes: Routes = [
     CodebaseService,
     OrderService,
     TagsService,
+    UserService,
     { provide: ErrorHandler, useClass: AppErrorHandler},
     ToastrService
   ],
