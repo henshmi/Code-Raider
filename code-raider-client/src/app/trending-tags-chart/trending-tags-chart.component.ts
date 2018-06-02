@@ -10,26 +10,12 @@ export class TrendingTagsChartComponent implements OnInit {
 
   @Input('tagsLimit') limit;
 
-  public chartLabels: string[] = [];
-  public chartData: number[] = [];
-  public chartType = 'pie';
+  @Input('chartLabels') chartLabels: string[];
+  @Input('chartData') chartData: number[];
+  @Input('chartType') chartType;
+  @Input('options') options = '';
 
-  constructor(private tagsService: TagsService) {
-    this.tagsService.getGroupedTags()
-    .subscribe(tags => {
-
-      const chartLabels = [];
-      const chartData = [];
-
-      for (let i = 0 ; i < this.limit; i++) {
-        chartLabels.push(tags[i]._id.tags);
-        chartData.push(tags[i].count);
-      }
-
-      this.chartData = chartData;
-      this.chartLabels = chartLabels;
-    });
-  }
+  constructor() {}
 
   // events
   public chartClicked(e: any): void {

@@ -1,12 +1,15 @@
 const TwitterService = require('../services/TwitterService');
+var ioService = require('../services/io');
 
 module.exports = {
 
 	Notify: async(req, res, next) => {
 
-		const tweet = req.body.notification;
+		const notification = req.body.notification;
 
-		TwitterService.postTweet(tweet, function(err, tweet, response){
+		ioService.notify(notification);
+
+		TwitterService.postTweet(notification, function(err, tweet, response){
 			if(err){
 				res.status(400).send(err);
 			}

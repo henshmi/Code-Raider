@@ -30,6 +30,14 @@ class="site-header">
               <input id="site-search" type="text" class="form-control" placeholder="Search Code Raider">
             </li>
             <li 
+            *ngIf="auth.admin"
+            class="nav-item py-2 d-md-inline-block">
+                <a 
+                class="nav-link" 
+                routerLink="admin/dashboard"
+                routerLinkActive="active">Admin's dashboard</a>
+            </li>
+            <li 
             class="nav-item py-2 d-md-inline-block">
               <a 
               class="nav-link" 
@@ -53,14 +61,6 @@ class="site-header">
               routerLink='orders' 
               routerLinkActive="active" 
               [routerLinkActiveOptions]="{ exact: true }">My orders</a>
-            </li>
-            <li 
-            *ngIf="auth.admin"
-            class="nav-item py-2 d-md-inline-block">
-                <a 
-                class="nav-link" 
-                routerLink="admin/dashboard"
-                routerLinkActive="active">Admin's dashboard</a>
             </li>
             <li
             *ngIf="auth.SignedIn; else anonymousUser;" 

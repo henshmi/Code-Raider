@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AlertService } from 'ngx-alerts';
+import io from 'socket.io-client';
+import { AppAlertsService } from './services/app-alerts.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,15 @@ import { AlertService } from 'ngx-alerts';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor() {}
+
+  private ioUrl = 'http://localhost:8080';
+  private socket;
+
+  constructor(private alertService: AppAlertsService) {
+    this.socket = io.connect(this.ioUrl);
+    this.socket.on('notification', (notification) => {
+      this.alertService.infoCustomMessage(notification, 'New notification from admin: ');
+    });
+  }
 
 }

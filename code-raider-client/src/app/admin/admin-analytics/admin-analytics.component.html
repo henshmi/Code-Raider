@@ -1,18 +1,23 @@
-<h4>Analytics</h4>
+<h4><i class="far fa-chart-bar"></i> Analytics</h4>
 <hr>
 <div class="row">
     <div class="col-md-6">
         <trending-tags-chart
-        [tagsLimit] = "5"
+        [chartLabels] = "siteTagschartLabels"       
+        [chartData] = "siteTagschartData"
+        [chartType] = "'pie'"
         ></trending-tags-chart>
         <br>
         <p class="text-center">Top 5 most popular tags on site</p>
     </div>
-    <!-- <div class="col-md-6">
+    <div class="col-md-6">
         <trending-tags-chart
-        [tagsLimit] = "5"
+        [chartLabels] = "stackOverflowChartLabels"       
+        [chartData] = "stackOverflowChartData"
+        [chartType] = "'bar'"
+        [options] = "{legend: false}"
         ></trending-tags-chart>
         <br>
-        <p class="text-center">Top 5 trending tags on site</p>
-    </div> -->
+        <p class="text-center">Top 5 most popular tags on "Stack Overflow"</p>
+    </div>
 </div>

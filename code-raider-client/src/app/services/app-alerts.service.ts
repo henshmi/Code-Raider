@@ -56,4 +56,8 @@ export class AppAlertsService {
     const message = this.messages[alert];
     this.toastr.info(message[0], message[1]);
   }
+
+  infoCustomMessage(message: string, title: string) {
+    this.toastr.info(message, title);
+  }
 }
