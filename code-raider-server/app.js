@@ -17,6 +17,7 @@ var db = mongoose.connection;
 app.use('/api/users', require('./routes/users'));
 app.use('/api/codebases', require('./routes/codebases'));
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/notifications', require('./routes/notifications'));
 
 const port = process.env.port || 8080;
 app.listen(port,'127.0.0.1');

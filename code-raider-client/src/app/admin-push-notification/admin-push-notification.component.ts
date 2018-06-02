@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../services/notification.service';
+import { AppAlertsService, AppAlert } from '../services/app-alerts.service';
 
 @Component({
   selector: 'app-admin-push-notification',
@@ -7,14 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPushNotificationComponent implements OnInit {
 
-  notification;
-
-  constructor() { }
+  constructor(
+    private notificationService: NotificationService,
+    private alertService: AppAlertsService) { }
 
   ngOnInit() {
   }
 
   submit(notification) {
+    this.notificationService
+    .pushNotification({notification})
+    .subscribe(response => {
+      this.alertService.success(AppAlert.notificationSent);
+    });
   }
 
 }

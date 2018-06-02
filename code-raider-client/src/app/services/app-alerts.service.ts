@@ -8,7 +8,9 @@ export enum AppAlert {
   orderConfirmed,
 
   codebaseAdded,
-  codebaseDeleted
+  codebaseDeleted,
+
+  notificationSent
 }
 
 @Injectable({
@@ -32,6 +34,12 @@ export class AppAlertsService {
     // Codebases
     this.messages[AppAlert.codebaseAdded] =  ['', 'Codebase added to stock.'];
     this.messages[AppAlert.codebaseDeleted] = ['', 'Codebase deleted from stock.'];
+
+    // Notifications
+    this.messages[AppAlert.notificationSent] = [
+      'Your message was sent to all users, and a new tweet was posted on twitter.',
+      'Notification sent!'
+    ];
   }
 
   success(alert: AppAlert) {

@@ -43,6 +43,7 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { UserService } from './services/user.service';
 import { AdminPushNotificationComponent } from './admin-push-notification/admin-push-notification.component';
+import { NotificationService } from './services/notification.service';
 
 const appRoutes: Routes = [
   {
@@ -135,6 +136,7 @@ const appRoutes: Routes = [
     OrderService,
     TagsService,
     UserService,
+    NotificationService,
     { provide: ErrorHandler, useClass: AppErrorHandler},
     ToastrService
   ],
