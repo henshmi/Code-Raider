@@ -40,6 +40,8 @@ export class DiscoverComponent implements OnInit {
   }
 
   filter(params) {
+    params.tag = encodeURIComponent(params.tag);
+
     this.codebaseService.getAll('', params)
     .subscribe(codebases => {
       this.codebases = codebases;

@@ -1,20 +1,18 @@
-<div 
-class="container" 
-appPageContent>
-<h4><i class="fas fa-shopping-cart"></i> Your cart</h4>
-  <hr>
-  <orders-container
-  [orders]="myOrders"
-  [confirmed] = false>
-  </orders-container>
-</div>
-<div 
-class="container" 
-appPageContent>
-  <h4>Previous orders</h4>
-  <hr>
-  <orders-container
-  [orders]="myOrders"
-  [confirmed] = true>
-  </orders-container>
+<div class="container" appPageContent>
+  <div class="row">
+    <aside class="col-md-3">
+      <search-form (search)="filter($event)"></search-form>
+    </aside>
+    <div class="col-md-9">
+      <h4>
+        <i class="fas fa-shopping-cart"></i> Your cart</h4>
+      <hr>
+      <orders-container [orders]="filteredOrders" [confirmed]="false">
+      </orders-container>
+      <h4>Previous orders</h4>
+      <hr>
+      <orders-container [orders]="filteredOrders" [confirmed]="true">
+      </orders-container>
+    </div>
+  </div>
 </div>

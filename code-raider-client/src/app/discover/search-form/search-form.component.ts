@@ -15,7 +15,7 @@ export class SearchFormComponent implements OnInit {
   }
 
   submit(filter) {
-    filter.tag = filter.tag ? encodeURIComponent(filter.tag) : '';
+    filter.tag = filter.tag ? filter.tag : '';
     filter.minprice = filter.minprice ? filter.minprice : '';
     filter.maxprice = filter.maxprice ? filter.maxprice : '';
 

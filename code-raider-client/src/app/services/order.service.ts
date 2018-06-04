@@ -20,8 +20,8 @@ export class OrderService extends DataService {
     super(http, 'http://localhost:8080/api/orders');
   }
 
-  getMyOrders() {
-    return this.getAll('/myorders')
+  getMyOrders(params = {}) {
+    return this.getAll('/myorders', params)
     .catch(this.handleError);
   }
 

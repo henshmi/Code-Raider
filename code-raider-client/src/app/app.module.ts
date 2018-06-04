@@ -44,6 +44,7 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { UserService } from './services/user.service';
 import { AdminPushNotificationComponent } from './admin-push-notification/admin-push-notification.component';
 import { NotificationService } from './services/notification.service';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
   {
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
   { path: 'codebases', component: DiscoverComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'about', component: AboutComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -106,7 +108,8 @@ const appRoutes: Routes = [
     AdminAnalyticsComponent,
     AdminUsersComponent,
     AdminOrdersComponent,
-    AdminPushNotificationComponent
+    AdminPushNotificationComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -32,9 +32,11 @@ module.exports.getAllOrders = function(callback){
     .exec(callback);
 }
 
-module.exports.getMyOrders = function(user_id, callback){
+module.exports.getMyOrders = function(user_id, query, callback){
+
     Order.find({user: user_id })
     .populate('codebase')
+    .find({})
     .exec(callback);
 }
 

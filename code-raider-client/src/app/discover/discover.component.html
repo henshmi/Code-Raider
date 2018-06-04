@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
-      <search-form 
-      (search)="filter($event)"
-      class="col-md-3"></search-form>
-        <codebases-container
-        class="col-md-9"
-        [codebases]="codebases"
-        ></codebases-container>
+    <aside
+    class="col-md-3">
+        <search-form 
+        (search)="filter($event)"></search-form>
+    </aside>
+    <codebases-container
+    class="col-md-9"
+    [codebases]="codebases"
+    ></codebases-container>
   </div>
 </div>

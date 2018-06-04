@@ -18,8 +18,9 @@ module.exports = {
 
 	getMyOrders: async(req, res, next) => {
 		var user = req.user;
+		const query = req.query;
 
-		Order.getMyOrders(user._id, function(err, orders){
+		Order.getMyOrders(user._id, query, function(err, orders){
 			if(err){
 				res.status(404).send('Not Found');
 			}
