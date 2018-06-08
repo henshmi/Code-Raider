@@ -10,6 +10,7 @@ import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import {DataTableModule} from 'angular-6-datatable';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -45,6 +46,7 @@ import { UserService } from './services/user.service';
 import { AdminPushNotificationComponent } from './admin-push-notification/admin-push-notification.component';
 import { NotificationService } from './services/notification.service';
 import { AboutComponent } from './about/about.component';
+import { AddressService } from './services/address.service';
 
 const appRoutes: Routes = [
   {
@@ -124,7 +126,10 @@ const appRoutes: Routes = [
     DataTableModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
   ],
   providers: [
     AuthService,
@@ -140,6 +145,7 @@ const appRoutes: Routes = [
     TagsService,
     UserService,
     NotificationService,
+    AddressService,
     { provide: ErrorHandler, useClass: AppErrorHandler},
     ToastrService
   ],

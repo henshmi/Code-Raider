@@ -1,3 +1,24 @@
 <div class="container" appPageContent>
-  About works!
+  <h3>About us</h3>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        We are Code Rader, 
+        Israel based company launched at 2018 in purpose of creating the best marketplace for old codebases.
+        <br>
+      </p>
+      <video src="../../assets/test_video.mp4" width="500px"></video>
+    </div>
+    <div class="col-md-6">
+      <agm-map
+      [latitude]="lat"
+      [longitude]="lng">
+        <agm-marker
+        *ngFor="let address of addresses"
+        [latitude]="address.latitude"
+        [longitude]="address.longtitude"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
 </div>

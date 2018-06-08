@@ -23,6 +23,11 @@ export class CodebaseService extends DataService {
     .catch(this.handleError);
   }
 
+  getRecommendedCodebases() {
+    return this.getAll('/recommended')
+    .catch(this.handleError);
+  }
+
   addCodebase(codebase: CodeBaseModel) {
     return this.post(codebase, '/new')
     .catch(this.handleError);

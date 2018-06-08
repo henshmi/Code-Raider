@@ -28,6 +28,19 @@ module.exports = {
 			}
 		});
 	},
+	getRecommendedCodebases: async(req, res, next) => {
+
+		const user_id = req.user._id;
+
+		Codebase.getRecommendedCodebases(user_id, function(err, codebases){
+			if(err){
+				res.status(404).send('Not Found');
+			}
+			else{
+				res.status(200).json(codebases);
+			}
+		});
+	},
 	postCodebase: async(req, res, next) => {
 		var user = req.user;
 		var codebase = req.body;

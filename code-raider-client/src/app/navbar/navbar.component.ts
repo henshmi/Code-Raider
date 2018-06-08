@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  @Output('signedOut') signedOut = new EventEmitter();
+
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
@@ -15,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   signout() {
     this.auth.signOut();
+    this.signedOut.emit();
   }
 
 }

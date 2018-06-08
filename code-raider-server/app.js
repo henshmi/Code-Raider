@@ -21,6 +21,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/codebases', require('./routes/codebases'));
 app.use('/api/orders', require('./routes/orders'));
 app.use('/api/notifications', require('./routes/notifications'));
+app.use('/api/addresses', require('./routes/addresses'));
 
 //Socket.io
 ioService.setIOSocket(io);

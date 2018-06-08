@@ -9,6 +9,9 @@ const adminGuard = require('../helpers/adminGuard');
   router.route('')
   .get(CodebaseController.getCodebases);
 
+  router.route('/recommended')
+  .get(passport.authenticate('jwt',{session: false}), CodebaseController.getRecommendedCodebases);
+
   router.route('/tags')
   .get(CodebaseController.getGroupedTags);
 

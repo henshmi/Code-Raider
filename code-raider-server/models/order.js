@@ -36,7 +36,6 @@ module.exports.getMyOrders = function(user_id, query, callback){
 
     Order.find({user: user_id })
     .populate('codebase')
-    .find({})
     .exec(callback);
 }
 

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Order = require('./order');
 
 var codebaseSchema = mongoose.Schema({
 	user_email:{
@@ -70,6 +71,29 @@ module.exports.getCodebases = function(query,callback){
     Codebase.find({})
     .and(dbQueries)
     .exec(callback);
+}
+
+module.exports.getRecommendedCodebases = function(user_id,callback){
+	
+	Order.getMyOrders(user_id, {}, function(err, orders){
+
+		dbQueries = [];
+
+		let allTags = [];
+
+		for(let i = 0 ; i < orders.length ; i++ ){
+			allTags = allTags.concat(orders[i].codebase.tags);
+		} 
+
+		const orderedCodebasesIds = orders.map(order => order.codebase._id);
+
+		dbQueries.push({ "tags": { $in: allTags }})
+		dbQueries.push({ "_id": { $nin: orderedCodebasesIds }})
+
+		Codebase.find({})
+		.and(dbQueries)
+		.exec(callback);
+	});
 }
 
 module.exports.addCodebase = function(user_email, codebase,callback){

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import io from 'socket.io-client';
 import { AppAlertsService } from './services/app-alerts.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,17 @@ export class AppComponent {
   private ioUrl = 'http://localhost:8080';
   private socket;
 
-  constructor(private alertService: AppAlertsService) {
+  constructor(
+    private router: Router,
+    private alertService: AppAlertsService) {
     this.socket = io.connect(this.ioUrl);
     this.socket.on('notification', (notification) => {
       this.alertService.infoCustomMessage(notification, 'New notification from admin: ');
     });
+  }
+
+  signedOut() {
+    this.router.navigate(['./login']);
   }
 
 }
