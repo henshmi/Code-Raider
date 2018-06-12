@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import io from 'socket.io-client';
-import { AppAlertsService } from './services/app-alerts.service';
+import { AppAlertsService } from 'shared/services/app-alerts.service';
 import { Router } from '@angular/router';
 
 @Component({
