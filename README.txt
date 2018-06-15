@@ -12,9 +12,7 @@ In order to run the application follow the next steps:
 
 5. Open browser and go to 'http://localhost:4200/'.
 
-
 ~~~~~~~~ Users ~~~~~~~~
-
 User:
   email: user@coderaider.com
   password: 123456
