@@ -40,9 +40,13 @@ export class DiscoverComponent implements OnInit {
   }
 
   filter(params) {
-    params.tag = encodeURIComponent(params.tag);
+    const toSend = {
+      tag: encodeURIComponent(params.tag);
+      minprice: params.minprice;
+      maxprice: params.maxprice;
+    }
 
-    this.codebaseService.getAll('', params)
+    this.codebaseService.getAll('', toSend)
     .subscribe(codebases => {
       this.codebases = codebases;
     });
