@@ -42,7 +42,13 @@ export class CodebasesContainerComponent implements OnInit {
   codebaseDeleted(id) {
     this.codebaseService.delete(id)
     .subscribe((response: Response) => {
-      const index = this.codebases.indexOf(id);
+      let index = -1;
+      for (let i = 0 ; i < this.codebases.length ; i++ ) {
+        if (this.codebases[i]._id === id) {
+          index = i;
+          break;
+        }
+      }
       this.codebases.splice(index, 1);
       this.alertService.info(AppAlert.codebaseDeleted);
     });
