@@ -87,6 +87,15 @@ module.exports.removeOrder = function(user,order_id, callback){
     });
 }
 
+module.exports.removeOrdersByUser = function(user_id, callback){
+
+	var query = {
+		user: new ObjectId(user_id.toString())
+	};
+
+    Order.find(query).remove().exec(callback);
+}
+
 module.exports.confirmOrder = function(user_id,order_id, callback){
 
 	var query = {

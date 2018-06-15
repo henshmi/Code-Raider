@@ -1,5 +1,7 @@
 const JWT = require('jsonwebtoken');
 const User = require('../models/user');
+const Order = require('../models/order');
+
 
 const { JWT_SECRET } = require('../configuration/index');
 
@@ -54,12 +56,15 @@ module.exports = {
 		var user_id = req.params.user_id;
 
 		User.removeUser(user_id, function(err, user){
-			if(err){
-				res.status(500).send('Server Error');
-			}
-			else{
-				res.status(200).json(user);
-			}
+			Order.removeOrdersByUser(user_id, function(){
+				if(err){
+					res.status(500).send('Server Error');
+				}
+				else{
+					res.status(200).json(user);
+				}
+			});
+	
 		});
 	}
 }
