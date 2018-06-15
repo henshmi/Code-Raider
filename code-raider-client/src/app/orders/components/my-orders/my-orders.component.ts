@@ -26,21 +26,23 @@ export class MyOrdersComponent implements OnInit {
 
   filter(params) {
 
-    params.tag = params.tag ? params.tag.replace('+', '\\+').toLowerCase() : '';
-    params.minprice = params.minprice ? params.minprice : 0;
-    params.maxprice = params.maxprice ? params.maxprice : 1000000;
+    let filterParams = {
+      tag: params.tag ? params.tag.replace('+', '\\+').toLowerCase() : '',
+      minprice: params.minprice ? params.minprice : 0,
+      maxprice: params.maxprice ? params.maxprice : 1000000
+    };
 
     this.filteredOrders = this.myOrders
     .filter(order => {
 
       let valid = true;
 
-      valid = valid && order.codebase.price >= params.minprice;
-      valid = valid && order.codebase.price <= params.maxprice;
+      valid = valid && order.codebase.price >= filterParams.minprice;
+      valid = valid && order.codebase.price <= filterParams.maxprice;
 
       if (params.tag) {
         valid = valid && order.codebase.tags.some(tag => {
-          return tag.toLowerCase().match('.*' + params.tag + '.*');
+          return tag.toLowerCase().match('.*' + filterParams.tag + '.*');
         });
       }
 
