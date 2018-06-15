@@ -1,5 +1,6 @@
 const Codebase = require('../models/codebase');
 const get_ip = require('ipware')().get_ip;
+const Order = require('../models/order');
 
 module.exports = {
 
@@ -56,10 +57,14 @@ module.exports = {
 		var id = req.params._id;
 
 		Codebase.removeCodebase(id, function(err, codebase){
-			if(err){
-				res.status(500).send('Server Error');
-			}
-			res.status(200).json(codebase);
+			Order.removeOrdersByCodebase(id, function(){
+				if(err){
+					res.status(500).send('Server Error');
+				}
+				else{
+					res.status(200).json(codebase);
+				}
+			});
 		});
 	},
 	getGroupedTags: async(req, res, next) => {

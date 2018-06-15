@@ -96,6 +96,15 @@ module.exports.removeOrdersByUser = function(user_id, callback){
     Order.find(query).remove().exec(callback);
 }
 
+module.exports.removeOrdersByCodebase = function(codebase_id, callback){
+
+	var query = {
+		codebase: new ObjectId(codebase_id.toString())
+	};
+
+    Order.find(query).remove().exec(callback);
+}
+
 module.exports.confirmOrder = function(user_id,order_id, callback){
 
 	var query = {
