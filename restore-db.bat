@@ -1,0 +1,1 @@
+mongorestore --drop --db code-raider "%CD%\code-raider-db"
