@@ -4,11 +4,11 @@ In order to run the application follow the next steps:
 
 1. Make sure MongoDB is up and running.
 
-2. Run 'restore-db.command'.
+2. Run 'restore-db.bat'.
 
-3. Run 'run-server.command'.
+3. Run 'run-server.bat'.
 
-4. Run 'run-client.command'.
+4. Run 'run-client.bat'.
 
 5. Open browser and go to 'http://localhost:4200/'.
 
